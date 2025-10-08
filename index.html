@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CPU Scheduling Visualizer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>CPU Scheduling Visualizer</h1>
+
+    <!-- Input Form -->
+    <div class="form">
+      <input type="text" id="processName" placeholder="Process Name" />
+      <input type="number" id="arrivalTime" placeholder="Arrival Time" min="0" />
+      <input type="number" id="burstTime" placeholder="Burst Time" min="1" />
+      <div id="priorityContainer" style="display: none;">
+        <input type="number" id="priority" placeholder="Priority (lower=higher)" />
+      </div>
+      <button onclick="addProcess()">Add Process</button>
+    </div>
+
+    <!-- Scheduling Type -->
+    <div class="options">
+      <select id="algorithm" onchange="toggleOptions()">
+        <option value="fcfs">FCFS</option>
+        <option value="roundRobin">Round Robin</option>
+        <option value="sjf">SJF (Non-Preemptive)</option>
+        <option value="srtf">SRTF (Preemptive)</option>
+        <option value="priorityPreemptive">Priority (Preemptive)</option>
+        <option value="priorityNonPreemptive">Priority (Non-Preemptive)</option> 
+      </select>
+
+      <div id="timeQuantumContainer" style="display: none;">
+        <input type="number" id="timeQuantum" placeholder="Time Quantum" min="1" value="2" />
+      </div>
+
+      <button onclick="startScheduling()">Start</button>
+      <button onclick="resetAll()">Reset</button>
+    </div>
+
+    <!-- Timer Display -->
+    <div id="timer">Current Time: 0</div>
+
+    <!-- Gantt Chart -->
+    <div class="visualization-container">
+      <div id="ganttContainer" style="overflow-x: auto; max-width: 100%;">
+        <canvas id="ganttChart" width="1200" height="100"></canvas>
+        <div id="timeline"></div>
+      </div>
+    </div>
+
+    <!-- Queue Visualization -->
+    <div id="queueContainer">
+      <h3>Process Queue:</h3>
+      <div id="queue"></div>
+    </div>
+
+    <!-- Process Details Table -->
+    <div id="processDetails">
+      <h3>Process Details:</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Process Name</th>
+            <th>Arrival Time</th>
+            <th>Burst Time</th>
+            <th id="priorityHeader" style="display: none;">Priority</th>
+          </tr>
+        </thead>
+        <tbody id="detailsTable"></tbody>
+      </table>
+    </div>
+
+    <!-- Output Section -->
+    <div id="output"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

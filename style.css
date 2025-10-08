@@ -1,0 +1,250 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  margin: 0;
+  padding: 20px;
+  color: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  background: #1e1e2f;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+}
+
+h1, h2, h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 1.5px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.form input[type="text"],
+.form input[type="number"] {
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  width: 150px;
+  box-shadow: 0 4px 10px rgba(118, 75, 162, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.form input[type="text"]:focus,
+.form input[type="number"]:focus {
+  outline: none;
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.85);
+}
+
+#priorityContainer {
+  display: flex;
+  align-items: center;
+}
+
+button {
+  padding: 12px 25px;
+  margin-top: 10px;
+  background: linear-gradient(45deg, #ff7e5f, #feb47b);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 5px 15px rgba(255, 126, 95, 0.6);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #feb47b, #ff7e5f);
+  box-shadow: 0 8px 25px rgba(254, 180, 123, 0.85);
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2cm;
+  margin-bottom: 30px;
+}
+
+.options select,
+#timeQuantumContainer input {
+  padding: 12px 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(118, 75, 162, 0.3);
+  transition: box-shadow 0.3s ease;
+  width: 170px;
+}
+
+.options select:focus,
+#timeQuantumContainer input:focus {
+  outline: none;
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.85);
+}
+
+.button-group {
+  display: flex;
+  gap: 2cm;
+  margin-top: 10px;
+}
+
+#timer {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 25px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.queue-section {
+  margin: 20px 0;
+}
+
+.queue-display {
+  display: flex;
+  gap: 20px; /* smaller gap since we use 2cm in form */
+  flex-wrap: wrap;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  min-height: 50px;
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.queue-item {
+  padding: 10px 18px;
+  background: linear-gradient(45deg, #ff6b6b, #f06595);
+  border-radius: 25px;
+  font-weight: 600;
+  color: #fff;
+  box-shadow: 0px 5px 15px rgba(240, 101, 149, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.queue-item:hover {
+  transform: scale(1.1);
+}
+
+.canvas-wrapper {
+  position: relative;
+  overflow-x: auto;
+  margin-bottom: 20px;
+  background: #2e2e46;
+  border: 2px solid #4e4e69;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+}
+
+#ganttChart-labels {
+  position: absolute;
+  top: 110px;
+  left: 0;
+  height: 20px;
+  width: 100%;
+  color: #fff;
+}
+
+.time-label {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  font-size: 13px;
+  color: #eee;
+  font-weight: 700;
+  text-shadow: 0 0 4px rgba(0,0,0,0.8);
+  transform: translateX(-50%);
+  user-select: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 25px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+table, th, td {
+  border: none;
+}
+
+th, td {
+  text-align: center;
+  padding: 12px 15px;
+  font-weight: 600;
+  color: #ddd;
+}
+
+thead {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.6);
+}
+
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  cursor: default;
+}
+
+#output {
+  margin-top: 30px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 15px;
+  font-size: 18px;
+  line-height: 1.4;
+  box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+  color: #eef2f7;
+  text-shadow: 0 0 3px rgba(0,0,0,0.7);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.visualization-container {
+  margin: 20px auto;
+  max-width: 90%;
+  border-radius: 15px;
+  padding: 15px;
+  background: linear-gradient(135deg, #89ff5a, #b721ff);
+  box-shadow: 0 10px 30px rgba(183, 33, 255, 0.5);
+}
+
+#ganttContainer {
+  position: relative;
+  min-width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+  background: hsl(240, 56%, 98%);
+  padding: 10px 0;
+  box-shadow: inset 0 0 20px #b721ff;
+}
+
+#ganttChart {
+  display: block;
+  background: #121229;
+  margin: 0 auto 25px auto;
+  border-radius: 10px;
+  box-shadow: 0 0 30px #b721ff;
+  transition: box-shadow 0.3s ease; 
+}
+
+ #ganttChart:hover {
+  box-shadow: 0 0 50px #ff5ecd;
+} 
+
